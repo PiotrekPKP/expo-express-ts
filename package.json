@@ -1,0 +1,13 @@
+{
+  "name": "expo-express-ts",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "npm run dev:api & npm run dev:mobile",
+    "dev:api": "cd api && npm run dev",
+    "dev:mobile": "cd mobile && npm run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
