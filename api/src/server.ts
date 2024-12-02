@@ -1,4 +1,5 @@
 import express, { urlencoded, json } from "express";
+import { zodCheck } from "./middlewares/zod.js";
 
 const app = express();
 

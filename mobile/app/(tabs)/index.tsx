@@ -1,18 +1,23 @@
-import { useEffect } from "react";
+import { API_URL } from "@/lib/consts";
+import { useQuery } from "@tanstack/react-query";
 import { View, Text } from "react-native";
 
 export default function HomeScreen() {
-  console.log("Hello from HomeScreen!", process.env.EXPO_PUBLIC_API_URL!);
+  const { data, isLoading, error } = useQuery({
+    queryKey: ["index"],
+    queryFn: async () => {
+      const data = await fetch(API_URL).then(
+        (res) => res.json() as Promise<{ message: string }>
+      );
 
-  useEffect(() => {
-    fetch(process.env.EXPO_PUBLIC_API_URL!)
-      .then((r) => r.json())
-      .then(console.log);
-  }, []);
+      return data;
+    },
+  });
 
   return (
     <View className="p-8">
       <Text className="text-xl">Index</Text>
+      <Text>{isLoading ? "Loading..." : data?.message}</Text>
     </View>
   );
 }
